@@ -1,0 +1,13 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	ssh
+#open	2020-09-02-01-46-03
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	version	auth_success	auth_attempts	direction	client	server	cipher_alg	mac_alg	compression_alg	kex_alg	host_key_alg	host_key
+#types	time	string	addr	port	addr	port	count	bool	count	enum	string	string	string	string	string	string	string	string
+1427726689.214476	CZNnwZia0hW64On9a	192.168.56.1	55470	192.168.56.103	22	2	F	4	-	SSH-2.0-OpenSSH_6.2	SSH-2.0-OpenSSH_6.7p1 Debian-3	aes128-ctr	hmac-sha1-etm@openssh.com	none	diffie-hellman-group-exchange-sha256	ssh-rsa	be:d2:96:0d:fb:4a:09:04:8f:27:a1:10:28:9a:63:3a
+1427726698.242734	Cs8WFuEro0c7tN2yd	192.168.56.1	55471	192.168.56.103	22	2	F	2	-	SSH-2.0-OpenSSH_6.2	SSH-2.0-OpenSSH_6.7p1 Debian-3	aes128-ctr	hmac-sha1-etm@openssh.com	none	diffie-hellman-group-exchange-sha256	ssh-rsa	be:d2:96:0d:fb:4a:09:04:8f:27:a1:10:28:9a:63:3a
+1427726703.854376	CKMIm3b1J74KQJP89	192.168.56.1	55472	192.168.56.103	22	2	F	2	-	SSH-2.0-OpenSSH_6.2	SSH-2.0-OpenSSH_6.7p1 Debian-3	aes128-ctr	hmac-sha1-etm@openssh.com	none	diffie-hellman-group-exchange-sha256	ssh-rsa	be:d2:96:0d:fb:4a:09:04:8f:27:a1:10:28:9a:63:3a
+1427726708.601801	CFNBmj4hc9bVpcMhrf	192.168.56.1	55473	192.168.56.103	22	2	F	2	-	SSH-2.0-OpenSSH_6.2	SSH-2.0-OpenSSH_6.7p1 Debian-3	aes128-ctr	hmac-sha1-etm@openssh.com	none	diffie-hellman-group-exchange-sha256	ssh-rsa	be:d2:96:0d:fb:4a:09:04:8f:27:a1:10:28:9a:63:3a
+#close	2020-09-02-01-46-03
