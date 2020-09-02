@@ -1,14 +1,17 @@
 Zeek Package for Log Filter
 ================================================
 
-.. image:: https://travis-ci.com/esnet/log_filter.svg?branch=master
-   :target: https://travis-ci.com/esnet/log_filter
+.. image:: https://github.com/esnet/log_filter/workflows/btests/badge.svg
+   :target: https://github.com/esnet/log_filter/actions
    :alt: Build Status
+
+.. image:: https://github.com/esnet/log_filter/workflows/Documentation/badge.svg
+   :target: https://esnet.github.io/log_filter/
+   :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/esnet/log_filter/badge.svg?branch=master
    :target: https://coveralls.io/repos/github/esnet/log_filter?branch=master
    :alt: Coverage Status
-
 
 .. image:: https://img.shields.io/github/license/esnet/log_filter)
    :target: :doc:`LICENSE <./LICENSE>`
