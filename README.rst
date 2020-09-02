@@ -1,12 +1,12 @@
 Zeek Package for Log Filter
 ================================================
 
-.. image:: https://github.com/esnet/zkg_logfilter/workflows/btests/badge.svg
+.. image:: https://github.com/esnet/zkg_logfilter/workflows/btest/badge.svg
    :target: https://github.com/esnet/zkg_logfilter/actions
    :alt: Build Status
 
 .. image:: https://github.com/esnet/zkg_logfilter/workflows/Documentation/badge.svg
-   :target: https://esnet.github.io/log_filter/
+   :target: https://esnet.github.io/zkg_logfilter/
    :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/esnet/zkg_logfilter/badge.svg?branch=master
