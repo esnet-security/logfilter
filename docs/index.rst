@@ -38,12 +38,7 @@ The following steps *always* happen, regardless of whether the plugin gets loade
 1. Zeek startup
 2. Plugin activation
 3. :doc:`__preload__.zeek </scripts/__preload__.zeek>` always gets loaded
-   The preload mechanism is primarily for loading types, defined in :doc:`types.zeek </scripts/types.zeek>` which the rest of the scripts depend on.
-4. :doc:`__load__.zeek </scripts/__load__.zeek>` always gets loaded
-
-If the plugin is explicitly loaded (:code:`@load ESnet/log_filter`), the load process continues:
-
-5. :doc:`ESnet/log_filter/__load__.zeek </scripts/ESnet/log_filter/__load__.zeek>` then loads the rest of the scripts.
+4. :doc:`__load__.zeek </scripts/__load__.zeek>` always gets loaded, which then loads the rest of the scripts.
 
 Reference
 =========

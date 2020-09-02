@@ -1,6 +1,6 @@
 # This test ensures basic functionality. Filter out log messages
 
-# @TEST-EXEC: zeek ESnet/log_filter %INPUT -Cr $TRACES/ssh.pcap
+# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap
 # @TEST-EXEC: btest-diff conn.log
 # @TEST-EXEC: btest-diff ssh.log
 module LogFilter;

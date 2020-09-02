@@ -1,6 +1,6 @@
 # This ensures we don't clobber over an existing predicate
 
-# @TEST-EXEC: zeek ESnet/log_filter %INPUT -Cr $TRACES/ssh.pcap
+# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap
 # @TEST-EXEC: ls *.log > output
 # @TEST-EXEC: btest-diff output
 

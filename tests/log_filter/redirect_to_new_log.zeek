@@ -1,6 +1,6 @@
 # This tests creating a new log.
 
-# @TEST-EXEC: zeek ESnet/log_filter %INPUT -Cr $TRACES/ssh.pcap
+# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap
 # @TEST-EXEC: btest-diff conn_long.log
 
 module LogFilter;
