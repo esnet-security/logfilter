@@ -73,7 +73,7 @@ See also the list of `contributors <contributors>`_ who participated in this pro
 License
 -------
 
-This project is licensed under the BSD license. See the `LICENSE <LICENSE>`_ file for details.
+This project is licensed under the BSD license. See the `LICENSE <./LICENSE>`_ file for details.
 
 Acknowledgments
 ---------------
