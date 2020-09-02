@@ -1,24 +1,21 @@
 Zeek Package for Log Filter
 ================================================
 
-.. image:: https://github.com/esnet/log_filter/workflows/btests/badge.svg
-   :target: https://github.com/esnet/log_filter/actions
+.. image:: https://github.com/esnet/zkg_logfilter/workflows/btests/badge.svg
+   :target: https://github.com/esnet/zkg_logfilter/actions
    :alt: Build Status
 
-.. image:: https://github.com/esnet/log_filter/workflows/Documentation/badge.svg
+.. image:: https://github.com/esnet/zkg_logfilter/workflows/Documentation/badge.svg
    :target: https://esnet.github.io/log_filter/
    :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/github/esnet/log_filter/badge.svg?branch=master
-   :target: https://coveralls.io/repos/github/esnet/log_filter?branch=master
+.. image:: https://coveralls.io/repos/github/esnet/zkg_logfilter/badge.svg?branch=master
+   :target: https://coveralls.io/repos/github/esnet/zkg_logfilter?branch=master
    :alt: Coverage Status
 
-.. image:: https://img.shields.io/github/license/esnet/log_filter)
+.. image:: https://img.shields.io/github/license/esnet/zkg_logfilter)
    :target: :doc:`LICENSE <./LICENSE>`
    :alt: BSD license
-
-
-![GitHub](
 
 Enables plugins to write fine-grained policy for log filtering, modification, and path customization.
 
@@ -40,7 +37,7 @@ Installing
 To install the package, run:
 
 ```
-zkg install https://github.com/esnet/log_filter
+zkg install https://github.com/esnet/zkg_logfilter
 ```
 
 If this is being installed on a cluster, install the package on the manager, then deploy it via: 

@@ -17,7 +17,7 @@ function make_pred(stream: Log::ID, f: Log::Filter): function(rec: any): bool
 	return function (rec: any): bool
 		{
 		# If we already have a predicate, bail out if that returns false.
-        if ( f?$pred && ! f$pred(rec) )
+		if ( f?$pred && ! f$pred(rec) )
 			return F;
 
 		# Now call our hook
