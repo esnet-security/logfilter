@@ -27,7 +27,7 @@ These instructions will get you a copy of the package up and running on your Zee
 Prerequisites
 -------------
 
-This is a package designed to run with the `Zeek Network Security Monitor<https://zeek.org>`_. First, `get Zeek<https://zeek.org/get-zeek/>`_. We strive to support both the current feature and LTS releases.
+This is a package designed to run with the `Zeek Network Security Monitor<https://zeek.org>`__. First, `get Zeek<https://zeek.org/get-zeek/>`_. We strive to support both the current feature and LTS releases.
 
 The recommended installation method is via the `Zeek package manager, zkg<https://docs.zeek.org/projects/package-manager/en/stable/>`_. On any recent system, run `pip install zkg`. After installation, run `zkg autoconfig`. For more information, see the `zkg documentation<https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html>`_.
 
@@ -37,11 +37,13 @@ Installing
 To install the package, run:
 
 .. code-block:: console
+
     zkg install https://github.com/esnet/zkg_logfilter
 
 If this is being installed on a cluster, install the package on the manager, then deploy it via: 
 
 .. code-block:: console
+
     zeekctl deploy
 
 Running the tests
