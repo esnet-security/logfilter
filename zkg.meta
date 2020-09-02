@@ -1,0 +1,8 @@
+[package]
+description = Enables plugins to write fine-grained policy for log filtering, modification, and path customization.
+credits = Vlad Grigorescu <vlad@es.net>
+tags = logs, filters, ESnet
+
+test_command = cd tests && make
+
+script_dir = ./scripts
