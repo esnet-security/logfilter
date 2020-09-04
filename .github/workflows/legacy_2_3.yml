@@ -1,0 +1,29 @@
+# This workflow will try to run it against Bro 2.3
+
+name: Bro 2.3
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron:  '30 8 * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test_ubuntu:
+    name: Bro ${{ matrix.zeek }}
+    runs-on: ubuntu-20.04
+    container: broplatform/bro:2.3.2
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: zkg autoconfig
+      run: PATH=/usr/local/zeek/bin:$PATH zkg autoconfig
+
+    - name: Test with zkg
+      run: PATH=/usr/local/zeek/bin:$PATH zkg test https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA} || ( cat /github/home/.zkg/testing/*.git/clones/*.git/zkg.test_command*; exit 1 )
+
+    - name: Install with zkg
+      run: PATH=/usr/local/zeek/bin:$PATH zkg install --skiptests --force https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA}
