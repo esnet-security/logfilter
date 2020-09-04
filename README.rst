@@ -5,7 +5,7 @@ Zeek Package for Log Filter
    :target: https://github.com/esnet/zkg_logfilter/actions?query=workflow%3A%22Zeek+master%22
    :alt: Zeek master Test Status
 
-.. image:: https://img.shields.io/github/workflow/status/esnet/zkg_logfilter/Documentation?label=Docs&logo=readthedocs
+.. image:: https://img.shields.io/github/workflow/status/esnet/zkg_logfilter/Documentation?label=Docs&logo=read-the-docs
    :target: https://esnet.github.io/zkg_logfilter/
    :alt: Documentation Status
 
