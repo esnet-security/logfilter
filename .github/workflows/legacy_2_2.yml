@@ -6,8 +6,6 @@ name: Bro 2.2
 on:
   push:
   pull_request:
-  schedule:
-    - cron:  '30 8 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,7 +22,10 @@ jobs:
         submodules: recursive
 
     - name: Install make
-      run: apt install make
+      run: |
+        echo "deb http://archive.debian.org/debian wheezy main" > /etc/apt/sources.list
+        apt-get update
+        apt-get install -y make
 
     - name: Test
       run: $GITHUB_WORKSPACE/.ci_scripts/test.sh
