@@ -1,6 +1,6 @@
 # This tests creating a new log.
 
-# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap
+# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap %DIR/../../scripts
 # @TEST-EXEC: btest-diff conn_long.log
 
 module LogFilter;
@@ -10,14 +10,16 @@ export {
 }
 
 @ifdef ( Conn::Info )
-hook pred_hook(stream: Log::ID, filter_name: string, rec: Conn::Info)
+hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
 {
 	if ( stream != Conn::LOG )
 		return;
 
-    if ( rec?$duration && rec$duration > 5 secs )
+	local r = rec as Conn::Info;
+
+    if ( r?$duration && r$duration > 5 secs )
 	    {
-		Log::write(LongConn_LOG, rec);
+		Log::write(LongConn_LOG, r);
 		break;
 		}
 }
