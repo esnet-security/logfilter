@@ -1,6 +1,6 @@
 # This ensures we don't clobber over an existing predicate
 
-# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap %DIR/../../scripts
+# @TEST-EXEC: zeek -Cr $TRACES/ssh.pcap %DIR/../../scripts %INPUT
 # @TEST-EXEC: ls *.log > output
 # @TEST-EXEC: btest-diff output
 

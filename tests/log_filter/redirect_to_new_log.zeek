@@ -1,6 +1,6 @@
 # This tests creating a new log.
 
-# @TEST-EXEC: zeek %INPUT -Cr $TRACES/ssh.pcap %DIR/../../scripts
+# @TEST-EXEC: zeek -Cr $TRACES/ssh.pcap %DIR/../../scripts %INPUT
 # @TEST-EXEC: btest-diff conn_long.log
 
 module LogFilter;

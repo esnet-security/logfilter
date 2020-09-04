@@ -1,4 +1,3 @@
-conn-ssh.log
 conn.log
 packet_filter.log
 ssh.log
