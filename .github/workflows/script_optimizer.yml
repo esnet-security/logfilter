@@ -26,6 +26,5 @@ jobs:
 
     - name: Run optimizer
       run: |
-        /usr/local/zeek/bin/zeek -buu $GITHUB_WORKSPACE/scripts
         /usr/local/zeek/bin/zeek -buu $GITHUB_WORKSPACE/scripts > output 2>&1
-        [[ -s output ]] && ( cat output; exit 1)
+        [[ -s output ]] && ( cat output; exit 1) || true
