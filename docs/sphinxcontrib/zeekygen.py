@@ -53,6 +53,9 @@ def run_zeek_script(script):
 def run_zeek_package(packages):
     """Runs zeek for a package"""
 
+    if not packages:
+        return
+
     conf = ""
     for p in packages:
         conf += "\t".join(["package", p, rst_script_dir + "/" + p + "/index.rst"]) +  "\n"

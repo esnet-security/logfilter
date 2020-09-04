@@ -1,5 +1,5 @@
 Zeek Package for Log Filter
-================================================
+===========================
 
 .. image:: https://github.com/esnet/zkg_logfilter/workflows/btest%20CI/badge.svg
    :target: https://github.com/esnet/zkg_logfilter/actions
@@ -13,8 +13,8 @@ Zeek Package for Log Filter
    :target: https://coveralls.io/repos/github/esnet/zkg_logfilter?branch=master
    :alt: Coverage Status
 
-.. image:: https://img.shields.io/github/license/esnet/zkg_logfilter)
-   :target: :doc:`LICENSE <./LICENSE>`
+.. image:: https://img.shields.io/github/license/esnet/zkg_logfilter
+   :target: `LICENSE <./LICENSE>`_
    :alt: BSD license
 
 Enables plugins to write fine-grained policy for log filtering, modification, and path customization.
@@ -27,24 +27,24 @@ These instructions will get you a copy of the package up and running on your Zee
 Prerequisites
 -------------
 
-This is a package designed to run with the [Zeek Network Security Monitor](https://zeek.org). First, [get Zeek](https://zeek.org/get-zeek/). We strive to support both the current feature and LTS releases.
+This is a package designed to run with the `Zeek Network Security Monitor <https://zeek.org>`__. First, `get Zeek <https://zeek.org/get-zeek/>`_. We strive to support both the current feature and LTS releases.
 
-The recommended installation method is via the [Zeek package manager, zkg](https://docs.zeek.org/projects/package-manager/en/stable/). On any recent system, run `pip install zkg`. After installation, run `zkg autoconfig`. For more information, see the [zkg documentation](https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html).
+The recommended installation method is via the `Zeek package manager, zkg <https://docs.zeek.org/projects/package-manager/en/stable/>`_. On any recent system, run `pip install zkg`. After installation, run `zkg autoconfig`. For more information, see the `zkg documentation <https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html>`_.
 
 Installing
 ----------
 
 To install the package, run:
 
-```
-zkg install https://github.com/esnet/zkg_logfilter
-```
+.. code-block:: console
+
+    zkg install https://github.com/esnet/zkg_logfilter
 
 If this is being installed on a cluster, install the package on the manager, then deploy it via: 
 
-```
-zeekctl deploy
-```
+.. code-block:: console
+
+    zeekctl deploy
 
 Running the tests
 -----------------
@@ -54,12 +54,12 @@ Running the tests
 Contributing
 ------------
 
-Please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for details on how to contribute.
+Please read `CONTRIBUTING.md <./docs/CONTRIBUTING.md>`_ for details on how to contribute.
 
 Versioning
 ----------
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](../../tags). 
+We use `SemVer <http://semver.org/>`_ for versioning. For the versions available, see the `tags on this repository <../../tags>`_. 
 
 Credits
 -------
@@ -68,12 +68,12 @@ Credits
 * Vlad Grigorescu <vlad@es.net>
 
 
-See also the list of [contributors](contributors) who participated in this project.
+See also the list of `contributors <contributors>`_ who participated in this project.
 
 License
 -------
 
-This project is licensed under the BSD license. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD license. See the `LICENSE <./LICENSE>`_ file for details.
 
 Acknowledgments
 ---------------
