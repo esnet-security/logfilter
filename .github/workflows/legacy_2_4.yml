@@ -19,14 +19,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Install zkg
-      run: pip install zkg
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
 
-    - name: zkg autoconfig
-      run: zkg autoconfig
-
-    - name: Test with zkg
-      run: zkg test https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA} || ( cat /github/home/.zkg/testing/*.git/clones/*.git/zkg.test_command*; exit 1 )
-
-    - name: Install with zkg
-      run: zkg install --skiptests --force https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA}
+    - name: Test
+      run: $GITHUB_WORKSPACE/.ci_scripts/test.sh
