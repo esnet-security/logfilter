@@ -25,4 +25,4 @@ jobs:
       run: $GITHUB_WORKSPACE/.ci_scripts/test.sh
 
     - name: Run optimizer
-      run: [[ $(/usr/local/zeek/bin/zeek -buu $GITHUB_WORKSPACE/scripts) ]] && exit 1
+      run: "[[ $(/usr/local/zeek/bin/zeek -buu $GITHUB_WORKSPACE/scripts) ]] && exit 1"
