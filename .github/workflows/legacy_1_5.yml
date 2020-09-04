@@ -19,11 +19,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Install zkg
+      run: pip install zkg
+
     - name: zkg autoconfig
-      run: PATH=/usr/local/zeek/bin:$PATH zkg autoconfig
+      run: PATH=/usr/local/bro/bin:$PATH zkg autoconfig
 
     - name: Test with zkg
-      run: PATH=/usr/local/zeek/bin:$PATH zkg test https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA} || ( cat /github/home/.zkg/testing/*.git/clones/*.git/zkg.test_command*; exit 1 )
+      run: PATH=/usr/local/bro/bin:$PATH zkg test https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA} || ( cat /github/home/.zkg/testing/*.git/clones/*.git/zkg.test_command*; exit 1 )
 
     - name: Install with zkg
-      run: PATH=/usr/local/zeek/bin:$PATH zkg install --skiptests --force https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA}
+      run: PATH=/usr/local/bro/bin:$PATH zkg install --skiptests --force https://github.com/${GITHUB_REPOSITORY}.git --version ${GITHUB_SHA}
