@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-filters">Writing Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-tests">Running the tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#versioning">Versioning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#credits">Credits</a></li>
@@ -216,6 +217,145 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">zeekctl deploy</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="writing-filters">
+<h2>Writing Filters<a class="headerlink" href="#writing-filters" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Filtering</p>
+<p>Let’s say that we only want our <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code> file to have connections where the responder’s port is 22.</p>
+<div class="highlight-zeek notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">@ifdef</span> <span class="p">(</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span> <span class="p">)</span>
+<span class="hll"><span class="kt">hook</span> <span class="nf">pred_hook</span><span class="p">(</span><span class="n">stream</span><span class="p">:</span> <span class="n">Log</span><span class="p">::</span><span class="n">ID</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">:</span> <span class="kt">string</span><span class="p">,</span> <span class="n">rec</span><span class="p">:</span> <span class="kt">any</span><span class="p">)</span>
+</span>  <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">stream</span> <span class="o">!=</span> <span class="n">SSH</span><span class="p">::</span><span class="n">LOG</span> <span class="o">||</span> <span class="n">filter_name</span> <span class="o">!=</span> <span class="s">&quot;default&quot;</span> <span class="p">)</span>
+          <span class="k">return</span><span class="p">;</span>
+
+  <span class="kd">local</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rec</span> <span class="ow">as</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span><span class="p">;</span>
+
+<span class="hll">  <span class="k">if</span> <span class="p">(</span> <span class="n">r</span><span class="o">$</span><span class="n">id</span><span class="o">$</span><span class="n">resp_p</span> <span class="o">!=</span> <span class="m">22/tcp</span> <span class="p">)</span>
+</span>          <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="cp">@endif</span>
+</pre></div>
+</td></tr></table></div>
+<p>To write a filter, we handle the <code class="docutils literal notranslate"><span class="pre">pred_hook</span></code> hook. Whenever a script calls <code class="docutils literal notranslate"><span class="pre">Log::write</span></code>, the hook fires. If <em>any</em> hook handler execution results in a <code class="docutils literal notranslate"><span class="pre">break</span></code>, the log message is not written. For more information about hooks, see: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook">https://docs.zeek.org/en/current/script-reference/types.html#type-hook</a></p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">pred_hook</span></code> is used for <em>all</em> log files, we need to take care to make sure we’re handling the right log messages. Wrapping the filter in an <code class="docutils literal notranslate"><span class="pre">&#64;ifdef</span></code> directive will prevent syntax errors if the base SSH scripts aren’t loaded, for some reason. Using <code class="docutils literal notranslate"><span class="pre">&#64;ifdef</span></code> is preferred, since if we were to load the scripts ourselves, we’d remove the user’s ability to not load those scripts.</p>
+<p>Line 4 checks that the message is from the SSH log, and the default filter. The logging framework supports additional filters (see: <a class="reference external" href="https://docs.zeek.org/en/current/frameworks/logging.html">https://docs.zeek.org/en/current/frameworks/logging.html</a> ), this check just ensures that we’re only modifying the behavior of the default <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code> file.</p>
+<p>Line 7 converts our info record from <code class="docutils literal notranslate"><span class="pre">any</span></code> type to an <code class="docutils literal notranslate"><span class="pre">SSH::Info</span></code> record, which allows us to access the fields therein. Finally, we check the responder’s port, and break out of the hook if it’s not TCP 22. The break causes the message to not be logged.</p>
+</li>
+<li><p>Redirecting</p>
+<p>Next, let’s say that instead of simply filtering what gets logged, we want to log messages to two different logs: <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code> and <code class="docutils literal notranslate"><span class="pre">ssh_nonstandard_port.log</span></code>. First, we create a new log stream:</p>
+<div class="highlight-zeek notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">module</span> <span class="nn">LogFilter</span><span class="p">;</span>
+
+<span class="cp">@ifdef</span> <span class="p">(</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span> <span class="p">)</span>
+
+<span class="k">export</span> <span class="p">{</span>
+  <span class="k">redef</span> <span class="kt">enum</span> <span class="nc">Log::ID</span> <span class="o">+=</span> <span class="p">{</span> <span class="n">SshNonStdPort_LOG</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">event</span> <span class="nf">LogFilter::initialized</span><span class="p">()</span>
+  <span class="p">{</span>
+  <span class="nf">Log::create_stream</span><span class="p">(</span><span class="n">SshNonStdPort_LOG</span><span class="p">,</span> <span class="p">[</span><span class="o">$</span><span class="n">columns</span><span class="o">=</span><span class="n">SSH</span><span class="p">::</span><span class="n">Info</span><span class="p">,</span> <span class="o">$</span><span class="n">path</span><span class="o">=</span><span class="s">&quot;ssh_nonstandard_port&quot;</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+<span class="cp">@endif</span>
+</pre></div>
+</td></tr></table></div>
+<p>Much of this should look familiar from the Zeek logging framework documentation (<a class="reference external" href="https://docs.zeek.org/en/current/frameworks/logging.html#add-a-new-log-file">https://docs.zeek.org/en/current/frameworks/logging.html#add-a-new-log-file</a> ). The difference is that we create the log in the <code class="docutils literal notranslate"><span class="pre">LogFilter::initialized</span></code> event, rather than in <code class="docutils literal notranslate"><span class="pre">zeek_init</span></code>. Once the Log Filter has activated and attached itself to all of the logs, this event fires. This provides an easy way to add a new log, without worrying about the log filter attaching itself multiple times, etc.</p>
+<p>Our hook handler also looks familiar:</p>
+<div class="highlight-zeek notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">@ifdef</span> <span class="p">(</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span> <span class="p">)</span>
+<span class="kt">hook</span> <span class="nf">pred_hook</span><span class="p">(</span><span class="n">stream</span><span class="p">:</span> <span class="n">Log</span><span class="p">::</span><span class="n">ID</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">:</span> <span class="kt">string</span><span class="p">,</span> <span class="n">rec</span><span class="p">:</span> <span class="kt">any</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">stream</span> <span class="o">!=</span> <span class="n">SSH</span><span class="p">::</span><span class="n">LOG</span> <span class="o">||</span> <span class="n">filter_name</span> <span class="o">!=</span> <span class="s">&quot;default&quot;</span> <span class="p">)</span>
+          <span class="k">return</span><span class="p">;</span>
+
+  <span class="kd">local</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rec</span> <span class="ow">as</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="n">r</span><span class="o">$</span><span class="n">id</span><span class="o">$</span><span class="n">resp_p</span> <span class="o">!=</span> <span class="m">22/tcp</span> <span class="p">)</span>
+          <span class="p">{</span>
+<span class="hll">          <span class="nf">Log::write</span><span class="p">(</span><span class="n">SshNonStdPort_LOG</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span>          <span class="k">break</span><span class="p">;</span>
+          <span class="p">}</span>
+  <span class="p">}</span>
+<span class="cp">@endif</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+</ol>
+<blockquote>
+<div><p>The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.</p>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>Copying</p>
+<p>If in our previous example we omitted the break in line 12, <em>all</em> log lines would be written to <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code>, and only the ones where the server wasn’t running on port 22 would be written to our new log.</p>
+</li>
+<li><p>Modifying</p>
+<p>Log lines can even be modified before they’re written to the log files. Let’s say that instead of version 2, one of our servers actually runs SSH version 9000, and we want to set the field appropriately:</p>
+<div class="highlight-zeek notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">@ifdef</span> <span class="p">(</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span> <span class="p">)</span>
+<span class="kt">hook</span> <span class="nf">pred_hook</span><span class="p">(</span><span class="n">stream</span><span class="p">:</span> <span class="n">Log</span><span class="p">::</span><span class="n">ID</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">:</span> <span class="kt">string</span><span class="p">,</span> <span class="n">rec</span><span class="p">:</span> <span class="kt">any</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">stream</span> <span class="o">!=</span> <span class="n">SSH</span><span class="p">::</span><span class="n">LOG</span> <span class="o">||</span> <span class="n">filter_name</span> <span class="o">!=</span> <span class="s">&quot;default&quot;</span> <span class="p">)</span>
+          <span class="k">return</span><span class="p">;</span>
+
+  <span class="kd">local</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rec</span> <span class="ow">as</span> <span class="n">SSH</span><span class="p">::</span><span class="n">Info</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="n">r</span><span class="o">$</span><span class="n">id</span><span class="o">$</span><span class="n">resp_h</span> <span class="o">==</span> <span class="m">192.168.1.22</span> <span class="p">)</span>
+<span class="hll">          <span class="n">r</span><span class="o">$</span><span class="n">version</span> <span class="o">=</span> <span class="mf">9000</span><span class="p">;</span>
+</span>  <span class="p">}</span>
+<span class="cp">@endif</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that when modifying log messages like this, we’re only modifying them at the very last second before they get written out. Any policy scripts have already inspected this record.</p>
+</li>
+</ol>
 </div>
 <div class="section" id="running-the-tests">
 <h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
