@@ -131,7 +131,7 @@ Writing Filters
       	}
       @endif
 
-  The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.
+   The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.
 
 3. Copying
 
