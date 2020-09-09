@@ -66,8 +66,6 @@ Writing Filters
    Let's say that we only want our ``ssh.log`` file to have connections where the responder's port is 22.
    
    .. code-block:: zeek
-      :linenos:
-      :emphasize-lines: 2,9
    
       @ifdef ( SSH::Info )
       hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
@@ -95,7 +93,6 @@ Writing Filters
    Next, let's say that instead of simply filtering what gets logged, we want to log messages to two different logs: ``ssh.log`` and ``ssh_nonstandard_port.log``. First, we create a new log stream:
 
    .. code-block:: zeek
-      :linenos:
 
       module LogFilter;
 
@@ -117,8 +114,6 @@ Writing Filters
    Our hook handler also looks familiar:
 
    .. code-block:: zeek
-      :linenos:
-      :emphasize-lines: 11
 
       @ifdef ( SSH::Info )
       hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
@@ -147,8 +142,6 @@ Writing Filters
    Log lines can even be modified before they're written to the log files. Let's say that instead of version 2, one of our servers actually runs SSH version 9000, and we want to set the field appropriately:
 
    .. code-block:: zeek
-      :linenos:
-      :emphasize-lines: 10
    
       @ifdef ( SSH::Info )
       hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
