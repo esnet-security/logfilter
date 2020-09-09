@@ -58,6 +58,113 @@ If this is being installed on a cluster, install the package on the manager, the
 
     zeekctl deploy
 
+Writing Filters
+---------------
+
+1. Filtering
+
+   Let's say that we only want our ``ssh.log`` file to have connections where the responder's port is 22.
+   
+   .. code-block:: zeek
+      :linenos:
+      :emphasize-lines: 2,9
+   
+      @ifdef ( SSH::Info )
+      hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
+      	{
+      	if ( stream != SSH::LOG || filter_name != "default" )
+      		return;
+      
+      	local r = rec as SSH::Info;
+      
+      	if ( r$id$resp_p != 22/tcp )
+      		break;
+      	}
+      @endif
+
+   To write a filter, we handle the ``pred_hook`` hook. Whenever a script calls ``Log::write``, the hook fires. If *any* hook handler execution results in a ``break``, the log message is not written. For more information about hooks, see: https://docs.zeek.org/en/current/script-reference/types.html#type-hook
+
+   Because ``pred_hook`` is used for *all* log files, we need to take care to make sure we're handling the right log messages. Wrapping the filter in an ``@ifdef`` directive will prevent syntax errors if the base SSH scripts aren't loaded, for some reason. Using ``@ifdef`` is preferred, since if we were to load the scripts ourselves, we'd remove the user's ability to not load those scripts.
+
+   Line 4 checks that the message is from the SSH log, and the default filter. The logging framework supports additional filters (see: https://docs.zeek.org/en/current/frameworks/logging.html ), this check just ensures that we're only modifying the behavior of the default ``ssh.log`` file.
+
+   Line 7 converts our info record from ``any`` type to an ``SSH::Info`` record, which allows us to access the fields therein. Finally, we check the responder's port, and break out of the hook if it's not TCP 22. The break causes the message to not be logged.
+
+2. Redirecting
+
+   Next, let's say that instead of simply filtering what gets logged, we want to log messages to two different logs: ``ssh.log`` and ``ssh_nonstandard_port.log``. First, we create a new log stream:
+
+   .. code-block:: zeek
+      :linenos:
+
+      module LogFilter;
+
+      @ifdef ( SSH::Info )
+
+      export {
+      	redef enum Log::ID += { SshNonStdPort_LOG };
+      }
+
+      event LogFilter::initialized()
+      	{
+      	Log::create_stream(SshNonStdPort_LOG, [$columns=SSH::Info, $path="ssh_nonstandard_port"]);
+      	}
+
+      @endif
+
+   Much of this should look familiar from the Zeek logging framework documentation (https://docs.zeek.org/en/current/frameworks/logging.html#add-a-new-log-file ). The difference is that we create the log in the ``LogFilter::initialized`` event, rather than in ``zeek_init``. Once the Log Filter has activated and attached itself to all of the logs, this event fires. This provides an easy way to add a new log, without worrying about the log filter attaching itself multiple times, etc.
+
+   Our hook handler also looks familiar:
+
+   .. code-block:: zeek
+      :linenos:
+      :emphasize-lines: 11
+
+      @ifdef ( SSH::Info )
+      hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
+      {
+      	if ( stream != SSH::LOG || filter_name != "default" )
+      		return;
+      
+      	local r = rec as SSH::Info;
+      
+      	if ( r$id$resp_p != 22/tcp )
+      		{
+      		Log::write(SshNonStdPort_LOG, r);
+      		break;
+      		}
+      	}
+      @endif
+
+  The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.
+
+3. Copying
+
+   If in our previous example we omitted the break in line 12, *all* log lines would be written to ``ssh.log``, and only the ones where the server wasn't running on port 22 would be written to our new log.
+
+4. Modifying
+
+   Log lines can even be modified before they're written to the log files. Let's say that instead of version 2, one of our servers actually runs SSH version 9000, and we want to set the field appropriately:
+
+   .. code-block:: zeek
+      :linenos:
+      :emphasize-lines: 10
+   
+      @ifdef ( SSH::Info )
+      hook pred_hook(stream: Log::ID, filter_name: string, rec: any)
+      	{
+      	if ( stream != SSH::LOG || filter_name != "default" )
+      		return;
+      
+      	local r = rec as SSH::Info;
+      
+      	if ( r$id$resp_h == 192.168.1.22 )
+      		r$version = 9000;
+      	}
+      @endif
+
+   Note that when modifying log messages like this, we're only modifying them at the very last second before they get written out. Any policy scripts have already inspected this record.
+
 Running the tests
 -----------------
 
