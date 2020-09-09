@@ -279,12 +279,8 @@
 <span class="cp">@endif</span>
 </pre></div>
 </div>
+<p>The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.</p>
 </li>
-</ol>
-<blockquote>
-<div><p>The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.</p>
-</div></blockquote>
-<ol class="arabic" start="3">
 <li><p>Copying</p>
 <p>If in our previous example we omitted the break in line 12, <em>all</em> log lines would be written to <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code>, and only the ones where the server wasn’t running on port 22 would be written to our new log.</p>
 </li>
