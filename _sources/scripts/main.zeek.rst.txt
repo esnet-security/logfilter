@@ -1,0 +1,47 @@
+:tocdepth: 3
+
+main.zeek
+=========
+.. zeek:namespace:: LogFilter
+
+This attaches a set of predicates to all logs, and then creates a :zeek:type:`hook` for that predicate.
+The hooks get called by priority. If any hook handler breaks out of the hook, the message does not get logged.
+
+:Namespace: LogFilter
+:Imports: :doc:`base/frameworks/logging <scripts/base/frameworks/logging/index>`
+
+Summary
+~~~~~~~
+Events
+######
+===================================================== ==============================================
+:zeek:id:`LogFilter::initialized`: :zeek:type:`event` Handle this event to create additional streams
+===================================================== ==============================================
+
+Hooks
+#####
+================================================== =============================================================
+:zeek:id:`LogFilter::pred_hook`: :zeek:type:`hook` If any handler breaks out of this, the record won't be logged
+================================================== =============================================================
+
+
+Detailed Interface
+~~~~~~~~~~~~~~~~~~
+Events
+######
+.. zeek:id:: LogFilter::initialized
+
+   :Type: :zeek:type:`event` ()
+
+   Handle this event to create additional streams
+
+Hooks
+#####
+.. zeek:id:: LogFilter::pred_hook
+
+   :Type: :zeek:type:`hook` (stream: :zeek:type:`Log::ID`, filter_name: :zeek:type:`string`, rec: :zeek:type:`any`) : :zeek:type:`bool`
+
+   If any handler breaks out of this, the record won't be logged
+
+
+
