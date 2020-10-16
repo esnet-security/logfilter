@@ -6,3 +6,6 @@ tags = logs, filters, ESnet
 test_command = cd tests && make
 
 script_dir = ./scripts
+
+depends =
+  zeek >=3.0.0
