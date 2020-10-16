@@ -1,5 +1,4 @@
-##! This is processed when the plugin's scripts are loaded. This happens
-##! automatically when ``zkg`` loads the plugin, or a Zeek script uses the
-##! ``@load`` directive.
+##! This is the entrypoint to loading the entire package.
 
-@load ./main
+@load ./main.zeek
+@load ./local
