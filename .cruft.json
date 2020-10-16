@@ -1,6 +1,6 @@
 {
     "template": "https://github.com/esnet/cookiecutter-zeekpackage.git",
-    "commit": "8ba9761a8c6c7eccedb7902919810b3b9aa1c6e3",
+    "commit": "8ecf6cb7addd16501a9610063b4636ce4c636663",
     "context": {
         "cookiecutter": {
             "project_name": "Log Filter",
