@@ -1,0 +1,20 @@
+Zeek Package
+============
+
+For Zeek scripting details, such as options, functions and events, see the auto-generated documentation:
+
+
+
+:doc:`/scripts/__load__.zeek`
+
+   This is the entrypoint to loading the entire package.
+
+:doc:`/scripts/main.zeek`
+
+   This attaches a set of predicates to all logs, and then creates a :zeek:type:`hook` for that predicate.
+   The hooks get called by priority. If any hook handler breaks out of the hook, the message does not get logged.
+
+:doc:`/scripts/local/__load__.zeek`
+
+   Site-specific customizations go here
+

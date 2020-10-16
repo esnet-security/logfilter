@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>__load__.zeek &mdash; zkg: Windows Version Detection source documentation</title>
+  <title>Zeek Package &mdash; zkg: Windows Version Detection source documentation</title>
   
 
   
@@ -35,9 +35,7 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="local/__load__.zeek" href="local/__load__.zeek.html" />
-    <link rel="prev" title="main.zeek" href="main.zeek.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,7 +96,7 @@
 </ul>
 </li>
 </ul>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="main.zeek.html">main.zeek</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="main.zeek.html#summary">Summary</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main.zeek.html#events">Events</a></li>
@@ -112,9 +110,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">__load__.zeek</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#detailed-interface">Detailed Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__load__.zeek.html">__load__.zeek</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="local/__load__.zeek.html">local/__load__.zeek</a><ul>
@@ -169,15 +167,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
-        
-      <li>__load__.zeek</li>
+      <li>Zeek Package</li>
     
     
 <li class="wy-breadcrumbs-aside">
 
   
-    <a href="../_sources/scripts/__load__.zeek.rst.txt" rel="nofollow"> View page source</a>
+    <a href="../_sources/scripts/package.rst.txt" rel="nofollow"> View page source</a>
   
 
 </li>
@@ -190,20 +186,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="load-zeek">
-<h1>__load__.zeek<a class="headerlink" href="#load-zeek" title="Permalink to this headline">¶</a></h1>
-<p>This is the entrypoint to loading the entire package.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Imports</dt>
-<dd class="field-odd"><p><span class="xref std std-doc">local</span>, <a class="reference internal" href="main.zeek.html"><span class="doc">main.zeek</span></a></p>
-</dd>
-</dl>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="detailed-interface">
-<h2>Detailed Interface<a class="headerlink" href="#detailed-interface" title="Permalink to this headline">¶</a></h2>
-</div>
+  <div class="section" id="zeek-package">
+<h1>Zeek Package<a class="headerlink" href="#zeek-package" title="Permalink to this headline">¶</a></h1>
+<p>For Zeek scripting details, such as options, functions and events, see the auto-generated documentation:</p>
+<p><a class="reference internal" href="__load__.zeek.html"><span class="doc">__load__.zeek</span></a></p>
+<blockquote>
+<div><p>This is the entrypoint to loading the entire package.</p>
+</div></blockquote>
+<p><a class="reference internal" href="main.zeek.html"><span class="doc">main.zeek</span></a></p>
+<blockquote>
+<div><p>This attaches a set of predicates to all logs, and then creates a <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a> for that predicate.
+The hooks get called by priority. If any hook handler breaks out of the hook, the message does not get logged.</p>
+</div></blockquote>
+<p><a class="reference internal" href="local/__load__.zeek.html"><span class="doc">local/__load__.zeek</span></a></p>
+<blockquote>
+<div><p>Site-specific customizations go here</p>
+</div></blockquote>
 </div>
 
 
@@ -211,15 +209,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="local/__load__.zeek.html" class="btn btn-neutral float-right" title="local/__load__.zeek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="main.zeek.html" class="btn btn-neutral float-left" title="main.zeek" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

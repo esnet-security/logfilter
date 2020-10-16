@@ -3,11 +3,9 @@
 __load__.zeek
 =============
 
-This is processed when the plugin's scripts are loaded. This happens
-automatically when ``zkg`` loads the plugin, or a Zeek script uses the
-``@load`` directive.
+This is the entrypoint to loading the entire package.
 
-:Imports: :doc:`main.zeek </scripts/main.zeek>`
+:Imports: :doc:`local </scripts/local/index>`, :doc:`main.zeek </scripts/main.zeek>`
 
 Summary
 ~~~~~~~

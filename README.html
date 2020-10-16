@@ -7,13 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Zeek Package for Log Filter &mdash; Log Filter source documentation</title>
+  <title>Zeek Package for Log Filter &mdash; zkg: Windows Version Detection source documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
 
   
   
@@ -37,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="__load__.zeek" href="scripts/__load__.zeek.html" />
+    <link rel="next" title="&lt;no title&gt;" href="scripts/index.html" />
     <link rel="prev" title="Zeek Package Documentation: Log Filter" href="index.html" /> 
 </head>
 
@@ -52,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Log Filter
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> zkg: Windows Version Detection
           
 
           
@@ -89,24 +88,17 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Zeek Package for Log Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-and-unloading">Updating and Unloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-filters">Writing Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-the-tests">Running the tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#versioning">Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-template">Package Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="scripts/__load__.zeek.html">__load__.zeek</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scripts/__load__.zeek.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scripts/__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="scripts/main.zeek.html">main.zeek</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="scripts/main.zeek.html#summary">Summary</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="scripts/main.zeek.html#events">Events</a></li>
@@ -120,8 +112,16 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="scripts/__load__.zeek.html">__load__.zeek</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scripts/__load__.zeek.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts/__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
 </ul>
-<ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scripts/local/__load__.zeek.html">local/__load__.zeek</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scripts/local/__load__.zeek.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts/local/__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
@@ -138,7 +138,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Log Filter</a>
+          <a href="index.html">zkg: Windows Version Detection</a>
         
       </nav>
 
@@ -192,24 +192,12 @@
 <h1>Zeek Package for Log Filter<a class="headerlink" href="#zeek-package-for-log-filter" title="Permalink to this headline">¶</a></h1>
 <a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+master%22"><img alt="Zeek master Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%20master?label=master&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
 <a class="reference external image-reference" href="https://esnet-security.github.io/logfilter/"><img alt="Documentation Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Documentation?label=Docs&amp;logo=read-the-docs" /></a>
-<a class="reference external image-reference" href="https://coveralls.io/repos/github/esnet-security/logfilter?branch=master"><img alt="Coverage Status" src="https://img.shields.io/coveralls/github/esnet-security/logfilter?label=Script%20Coverage&amp;logo=coveralls" /></a>
+<a class="reference external image-reference" href="https://coveralls.io/github/esnet-security/logfilter?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/esnet-security/logfilter/badge.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3ACruft"><img alt="Template Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Cruft?label=Latest%20Template" /></a>
 <p>Enables plugins to write fine-grained policy for log filtering, modification, and path customization.</p>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>These instructions will get you a copy of the package up and running on your Zeek cluster. See development for notes on how to install the package in order to hack on or contribute to it.</p>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.0%22"><img alt="Zeek v3.0 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.0?label=v3.0&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
-<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.1%22"><img alt="Zeek v3.1 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.1?label=v3.1&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
-<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.2%22"><img alt="Zeek v3.2 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.2?label=v3.2&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
-<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.3%22"><img alt="Zeek v3.3 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.3?label=v3.3&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
-<p>This is a package designed to run with the <a class="reference external" href="https://zeek.org">Zeek Network Security Monitor</a>. First, <a class="reference external" href="https://zeek.org/get-zeek/">get Zeek</a>. We strive to support both the current feature and LTS releases.</p>
-<p>The recommended installation method is via the <a class="reference external" href="https://docs.zeek.org/projects/package-manager/en/stable/">Zeek package manager, zkg</a>. On any recent system, run <cite>pip install zkg</cite>. After installation, run <cite>zkg autoconfig</cite>. For more information, see the <a class="reference external" href="https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html">zkg documentation</a>.</p>
-</div>
-<div class="section" id="installing">
-<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
-<p>To install the package, run:</p>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>If you already have Zeek and <code class="docutils literal notranslate"><span class="pre">zkg</span></code> installed, simply run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">zkg install https://github.com/esnet-security/logfilter</span>
 </pre></div>
 </div>
@@ -217,6 +205,36 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">zeekctl deploy</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="updating-and-unloading">
+<h2>Updating and Unloading<a class="headerlink" href="#updating-and-unloading" title="Permalink to this headline">¶</a></h2>
+<p>We use <a class="reference external" href="http://semver.org/">SemVer</a> for versioning. For the versions
+available, see the <a class="reference external" href="../../tags">tags on this repository</a>. You can
+pass an additional argument to the <code class="docutils literal notranslate"><span class="pre">install</span></code> command with the desired
+version.</p>
+<p>To upgrade to the latest version run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">zkg upgrade logfilter</span>
+</pre></div>
+</div>
+<p>You can modify the above command by replacing <code class="docutils literal notranslate"><span class="pre">upgrade</span></code> with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unload</span></code>, to configure Zeek to not load the package on startup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load</span></code>, to configure Zeek to load the package on startup (default after an install).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove</span></code>, to delete the package from the system.</p></li>
+</ul>
+<p>If you’re operating in a cluster, after performing any of the above changes, you’ll need to re-run <code class="docutils literal notranslate"><span class="pre">zeekctl</span> <span class="pre">deploy</span></code>.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.3%22"><img alt="Zeek v3.3 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.3?label=v3.3&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.2%22"><img alt="Zeek v3.2 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.2?label=v3.2&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.1%22"><img alt="Zeek v3.1 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.1?label=v3.1&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+3.0%22"><img alt="Zeek v3.0 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%203.0?label=v3.0&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
+<p>This is a package designed to run with the <a class="reference external" href="https://zeek.org">Zeek Network Security Monitor</a>. First, <a class="reference external" href="https://zeek.org/get-zeek/">get Zeek</a>. We strive to support both the current feature and LTS releases.</p>
+<p>The recommended installation method is via the <a class="reference external" href="https://docs.zeek.org/projects/package-manager/en/stable/">Zeek package manager, zkg</a>. Follow the <a class="reference external" href="https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html">Quickstart guide</a>.</p>
+<p>To have Zeek load packages managed by <code class="docutils literal notranslate"><span class="pre">zkg</span></code>, ensure that <code class="docutils literal notranslate"><span class="pre">&#64;load</span> <span class="pre">packages</span></code> is being loaded by Zeek.</p>
+<p>This package is also tested with the following legacy Zeek (Bro) versions, although their use is strongly discouraged, due to security and performance issues and continued compatability is not supported.</p>
+<a class="reference external image-reference" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3A%22Zeek+2.6%22"><img alt="Zeek v2.6 Test Status" src="https://img.shields.io/github/workflow/status/esnet-security/logfilter/Zeek%202.6?label=v2.6&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMS4zNyAyMy4yNyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYuMjYsMTEuMzVhLjcuNywwLDAsMS0uNDYtLjE4bC01LjU4LTVBLjY5LjY5LDAsMCwxLDAsNS43YS43Mi43MiwwLDAsMSwuMTgtLjQ5bDAsMCwuMDUsMGgwbDUuNTQtNUEuNy43LDAsMCwxLDYuMjcsMGEuNi42LDAsMCwxLC4yNy4wNkEuNjcuNjcsMCwwLDEsNywuNjhMNi42OSwyLjkxSDE5LjgzYS42Ny42NywwLDAsMSwuNjEuMzkuNjguNjgsMCwwLDEtLjA4LjcxbC0xLjg0LDIuM2EuNjUuNjUsMCwwLDEtLjUyLjI1LjY4LjY4LDAsMCwxLS42OC0uNi42NS42NSwwLDAsMSwuMTUtLjVsMS0xLjE5SDZhLjY4LjY4LDAsMCwxLS42Ny0uNjhsLjE4LTEuMjdMMS42OCw1LjY4LDUuNDcsOSw1LjI5LDcuOEEuNjguNjgsMCwwLDEsNiw3LjA4bDEuMzYtLjE1LDAsLjYtLjExLS40Mi4wNi40M2EuMjEuMjEsMCwwLDAtLjE4LjIxQS4yMi4yMiwwLDAsMCw3LjMzLDh2LjFsMCwuNS0uNjItLjA2LjI2LDIuMTNhLjY4LjY4LDAsMCwxLS40MS42NUEuNjYuNjYsMCwwLDEsNi4yNiwxMS4zNVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS4wOSwyMy4yN2EuNTguNTgsMCwwLDEtLjI2LS4wNi42OC42OCwwLDAsMS0uNDEtLjYybC4yNi0yLjI0SDEuNTRBLjcxLjcxLDAsMCwxLC45MiwyMCwuNjkuNjksMCwwLDEsMSwxOS4yNUwyLjg0LDE3YS42Ny42NywwLDAsMSwuNTMtLjI1LjcxLjcxLDAsMCwxLC40Mi4xNC42Ny42NywwLDAsMSwuMjUuNDYuNjkuNjksMCwwLDEtLjE0LjVMMywxOUgxNS4zOWEuNjcuNjcsMCwwLDEsLjY4LjY3TDE1Ljg5LDIxbDMuNzktMy4zN0wxNS45LDE0LjI0bC4xOCwxLjIyYS42OC42OCwwLDAsMS0uNjcuNzJMMTQsMTYuMzRsMC0uNjFoLjA3YS4yMy4yMywwLDAsMCwuMTctLjIyQS4yMi4yMiwwLDAsMCwxNCwxNS4zaDBsMC0uNnYuNWwuMDYtLjQ5LjU5LjA1LS4yNi0yLjEyYS42OS42OSwwLDAsMSwuNDEtLjY2LjU5LjU5LDAsMCwxLC4yNy0uMDUuNjcuNjcsMCwwLDEsLjQ2LjE4bDUuNTgsNWEuNjkuNjksMCwwLDEsLjIyLjQ4LjY2LjY2LDAsMCwxLS4xOS40OGwwLDAsMCwwLTUuNTUsNUEuNjguNjgsMCwwLDEsMTUuMDksMjMuMjdaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNy4yMSwxNi4zNGEuODMuODMsMCwwLDEtLjc1LS40OEEuODEuODEsMCwwLDEsNi41OCwxNUwxMiw4LjU4SDcuMzJsLS4wNiwwYS44MS44MSwwLDAsMS0uNzMtLjgxLjgyLjgyLDAsMCwxLC43OS0uODJoNi41MWEuODMuODMsMCwwLDEsLjYzLDEuMzZMOSwxNC42OWg1YS44My44MywwLDAsMSwwLDEuNjVINy4yMVoiLz48L3N2Zz4=" /></a>
 </div>
 <div class="section" id="writing-filters">
 <h2>Writing Filters<a class="headerlink" href="#writing-filters" title="Permalink to this headline">¶</a></h2>
@@ -279,8 +297,12 @@
 <span class="cp">@endif</span>
 </pre></div>
 </div>
-<p>The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.</p>
 </li>
+</ol>
+<blockquote>
+<div><p>The only difference is in line 11, where we write the line to our new log file before breaking out of the hook.</p>
+</div></blockquote>
+<ol class="arabic" start="3">
 <li><p>Copying</p>
 <p>If in our previous example we omitted the break in line 12, <em>all</em> log lines would be written to <code class="docutils literal notranslate"><span class="pre">ssh.log</span></code>, and only the ones where the server wasn’t running on port 22 would be written to our new log.</p>
 </li>
@@ -304,30 +326,22 @@
 </li>
 </ol>
 </div>
-<div class="section" id="running-the-tests">
-<h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
-<p><cite>zkg</cite> will run the test suite before installing. To manually run the tests, go into the <cite>tests</cite> directory, and run <cite>make</cite>.</p>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>Contributions are welcome! The easiest way to give back is to comment on <a class="reference external" href="https://github.com/esnet-security/logfilter/issues">issues</a> that are important to you – even a quick reaction (thumbs-up/heart/thumbs-down) would help us prioritize issues.</p>
+<p>There’s a more in-depth <a class="reference external" href="docs/contributing.rst">contribution guide</a> which lays out some ways that anyone can help.</p>
 </div>
-<div class="section" id="versioning">
-<h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h2>
-<p>We use <a class="reference external" href="http://semver.org/">SemVer</a> for versioning. For the versions available, see the <a class="reference external" href="../../tags">tags on this repository</a>.</p>
+<div class="section" id="package-template">
+<h2>Package Template<a class="headerlink" href="#package-template" title="Permalink to this headline">¶</a></h2>
+<p>This package was created with a <a class="reference external" href="https://github.com/esnet/cookiecutter-zeekpackage">template</a>, using <a class="reference external" href="https://github.com/cruft/cruft">Cruft</a>. A <a class="reference external" href="https://github.com/esnet-security/logfilter/actions?query=workflow%3ACruft">CI job</a> checks for updates to the template. To update the package, simply run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -U cruft</span>
+<span class="go">cruft update</span>
+</pre></div>
 </div>
-<div class="section" id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Vlad Grigorescu &lt;<a class="reference external" href="mailto:vlad&#37;&#52;&#48;es&#46;net">vlad<span>&#64;</span>es<span>&#46;</span>net</a>&gt;</p></li>
-</ul>
-<p>See also the list of <a class="reference external" href="contributors">contributors</a> who participated in this project.</p>
 </div>
 <div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
-<a href="#id2"><span class="problematic" id="id3">BSD license</span></a><p>This project is licensed under the BSD license. See the <a class="reference external" href="./LICENSE">LICENSE</a> file for details.</p>
-</div>
-<div class="section" id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>ESnet team for Zeek Package Cookie Cutter</p></li>
-</ul>
+<p>This project is licensed under the BSD license. See the <a class="reference external" href="./LICENSE">LICENSE</a> file for details.</p>
 </div>
 </div>
 
@@ -339,7 +353,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scripts/__load__.zeek.html" class="btn btn-neutral float-right" title="__load__.zeek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scripts/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Zeek Package Documentation: Log Filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -352,7 +366,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, ESnet
+        &copy; Copyright 2020, The Regents of the University of California through the Lawrence Berkeley National Laboratory and the International Computer Science Institute
 
     </p>
   </div>

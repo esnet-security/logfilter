@@ -7,13 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>main.zeek &mdash; Log Filter source documentation</title>
+  <title>main.zeek &mdash; zkg: Windows Version Detection source documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
 
   
   
@@ -37,8 +36,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Index" href="../genindex.html" />
-    <link rel="prev" title="__load__.zeek" href="__load__.zeek.html" /> 
+    <link rel="next" title="__load__.zeek" href="__load__.zeek.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Log Filter
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> zkg: Windows Version Detection
           
 
           
@@ -89,24 +88,17 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../README.html">Zeek Package for Log Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#updating-and-unloading">Updating and Unloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../README.html#writing-filters">Writing Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#running-the-tests">Running the tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#versioning">Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#package-template">Package Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../README.html#license">License</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="__load__.zeek.html">__load__.zeek</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">main.zeek</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#events">Events</a></li>
@@ -120,8 +112,16 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="__load__.zeek.html">__load__.zeek</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
 </ul>
-<ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="local/__load__.zeek.html">local/__load__.zeek</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="local/__load__.zeek.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local/__load__.zeek.html#detailed-interface">Detailed Interface</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
@@ -138,7 +138,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Log Filter</a>
+          <a href="../index.html">zkg: Windows Version Detection</a>
         
       </nav>
 
@@ -169,6 +169,8 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
+        
       <li>main.zeek</li>
     
     
@@ -195,14 +197,14 @@
 <code class="sig-name descname">LogFilter</code><a class="headerlink" href="#namespace-LogFilter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<p>This attaches a set of predicates to all logs, and then creates a <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a> for that predicate.
+<p>This attaches a set of predicates to all logs, and then creates a <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a> for that predicate.
 The hooks get called by priority. If any hook handler breaks out of the hook, the message does not get logged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Namespace</dt>
 <dd class="field-odd"><p>LogFilter</p>
 </dd>
 <dt class="field-even">Imports</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.zeek.org/en/current/scripts/base/frameworks/logging/index.html" title="(in Zeek vv3.2.1)"><span class="xref std std-doc">base/frameworks/logging</span></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.zeek.org/en/current/scripts/base/frameworks/logging/index.html" title="(in Zeek vv3.2.2)"><span class="xref std std-doc">base/frameworks/logging</span></a></p>
 </dd>
 </dl>
 <div class="section" id="summary">
@@ -215,7 +217,7 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
 <col style="width: 46%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id-LogFilter::initialized" title="LogFilter::initialized id"><code class="xref zeek zeek-id docutils literal notranslate"><span class="pre">LogFilter::initialized</span></code></a>: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-event" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id-LogFilter::initialized" title="LogFilter::initialized id"><code class="xref zeek zeek-id docutils literal notranslate"><span class="pre">LogFilter::initialized</span></code></a>: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-event" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
 <td><p>Handle this event to create additional streams</p></td>
 </tr>
 </tbody>
@@ -229,7 +231,7 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
 <col style="width: 55%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id-LogFilter::pred_hook" title="LogFilter::pred_hook id"><code class="xref zeek zeek-id docutils literal notranslate"><span class="pre">LogFilter::pred_hook</span></code></a>: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id-LogFilter::pred_hook" title="LogFilter::pred_hook id"><code class="xref zeek zeek-id docutils literal notranslate"><span class="pre">LogFilter::pred_hook</span></code></a>: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a></p></td>
 <td><p>If any handler breaks out of this, the record won’t be logged</p></td>
 </tr>
 </tbody>
@@ -245,7 +247,7 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
 <code class="sig-name descname">LogFilter::initialized</code><a class="headerlink" href="#id-LogFilter::initialized" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-event" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">event</span></code></a> ()</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-event" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">event</span></code></a> ()</p>
 </dd>
 </dl>
 <p>Handle this event to create additional streams</p>
@@ -259,7 +261,7 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
 <code class="sig-name descname">LogFilter::pred_hook</code><a class="headerlink" href="#id-LogFilter::pred_hook" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a> (stream: <a class="reference external" href="https://docs.zeek.org/en/current/scripts/base/frameworks/logging/main.zeek.html#type-Log::ID" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">Log::ID</span></code></a>, filter_name: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-string" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">string</span></code></a>, rec: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-any" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">any</span></code></a>) : <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-bool" title="(in Zeek vv3.2.1)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-hook" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">hook</span></code></a> (stream: <a class="reference external" href="https://docs.zeek.org/en/current/scripts/base/frameworks/logging/main.zeek.html#type-Log::ID" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">Log::ID</span></code></a>, filter_name: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-string" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">string</span></code></a>, rec: <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-any" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">any</span></code></a>) : <a class="reference external" href="https://docs.zeek.org/en/current/script-reference/types.html#type-bool" title="(in Zeek vv3.2.2)"><code class="xref zeek zeek-type docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 <p>If any handler breaks out of this, the record won’t be logged</p>
@@ -277,10 +279,10 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../genindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="__load__.zeek.html" class="btn btn-neutral float-right" title="__load__.zeek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="__load__.zeek.html" class="btn btn-neutral float-left" title="__load__.zeek" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -290,7 +292,7 @@ The hooks get called by priority. If any hook handler breaks out of the hook, th
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, ESnet
+        &copy; Copyright 2020, The Regents of the University of California through the Lawrence Berkeley National Laboratory and the International Computer Science Institute
 
     </p>
   </div>
