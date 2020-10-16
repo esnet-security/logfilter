@@ -5,4 +5,4 @@
 # This test will simply load your script/__load__.zeek in bare mode.
 # If this is the only test tha fails, you are likely not @load-ing a dependency.
 #
-# @TEST-EXEC: $ZEEK --bare-mode %DIR/../../scripts
+# @TEST-EXEC: zeek --bare-mode %DIR/../../scripts

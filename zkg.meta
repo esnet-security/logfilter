@@ -8,4 +8,4 @@ test_command = cd tests && make
 script_dir = ./scripts
 
 depends =
-  zeek >=2.6.0
+  zeek >=3.0.0
